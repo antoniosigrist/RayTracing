@@ -1,0 +1,20 @@
+Número de Threads x Tempo de Execução: 
+N Threads: 1 - Tempo de Execução: 8.86228,
+N Threads: 2 - Tempo de Execução: 5.80458,
+N Threads: 3 - Tempo de Execução: 5.15364,
+N Threads: 4 - Tempo de Execução: 5.24163,
+N Threads: 5 - Tempo de Execução: 5.66867,
+
+Tempo de Execução: 
+8.86228,
+5.80458,
+5.15364,
+5.24163,
+5.66867,
+
+Número de threads: 
+1,
+2,
+3,
+4,
+5,

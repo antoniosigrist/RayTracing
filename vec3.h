@@ -15,6 +15,8 @@
 #include <math.h>
 #include <stdlib.h>
 #include <iostream>
+#include <xmmintrin.h>
+
 
 class vec3  {
 
@@ -47,6 +49,7 @@ public:
     
     
     float e[3];
+
 };
 
 
