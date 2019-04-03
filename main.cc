@@ -75,8 +75,8 @@ hitable *random_scene() {
 
 int main() {
 
-    int tamanho_testes_i = 0;
-    int tamanho_testes = 5;
+    int tamanho_testes_i = 1;
+    int tamanho_testes = 15;
 
     float time_list[tamanho_testes];
     int thread_num[tamanho_testes];
@@ -86,7 +86,7 @@ int main() {
         auto now = high_resolution_clock::now();
         omp_set_num_threads(inter + 1);
 
-        float prop = 1.2;
+        float prop = 1;
         int nx = 120*prop;
         int ny = 80*prop;
         int ns = 10;
@@ -122,9 +122,9 @@ int main() {
                     v = float(j + drand48()) / float(ny);
                     ray r = cam.get_ray(u, v);
                     vec3 p = r.point_at_parameter(2.0);
+
+
                     vec3 color2 = color(r, world,0);
-
-
                     #pragma omp critical
                     col += color2;
                         
@@ -132,30 +132,30 @@ int main() {
 
                 col /= float(ns);
 
-                  #pragma omp parallel
-                { 
-                    #pragma omp master
-                    {
+                 // #pragma omp parallel
+                //{ 
+                   // #pragma omp master
+                   // {
                         int ir,ig,ib;
 
-                        #pragma omp task shared(col)      
+                      //  #pragma omp task shared(col)      
                         col = vec3( sqrt(col[0]), sqrt(col[1]), sqrt(col[2]) );   
 
-                        #pragma omp taskwait
-                        #pragma omp task shared(ir)
+                      //  #pragma omp taskwait
+                       // #pragma omp task shared(ir)
                         ir = int(255.99*col[0]); 
 
-                        #pragma omp task shared (ig)
+                        //#pragma omp task shared (ig)
                         ig = int(255.99*col[1]); 
                         
-                        #pragma omp task shared (ib) 
+                       // #pragma omp task shared (ib) 
                         ib = int(255.99*col[2]); 
                         
-                        #pragma omp taskwait
+                       // #pragma omp taskwait
                         std::cout << ir << " " << ig << " " << ib << "\n";
-                    }
+                   // }
 
-                }
+                //}
             }
         }
 

@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <xmmintrin.h>
+#include <x86intrin.h>
 
 
 class vec3  {
@@ -49,6 +50,8 @@ public:
     
     
     float e[3];
+
+    //__m256 a2,b2,result;
 
 };
 
@@ -112,6 +115,7 @@ inline vec3& vec3::operator+=(const vec3 &v){
     e[0]  += v.e[0];
     e[1]  += v.e[1];
     e[2]  += v.e[2];
+
     return *this;
 }
 
